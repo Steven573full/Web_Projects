@@ -1,0 +1,42 @@
+﻿@model IEnumerable<RES_CONTROL.Models.FINCAS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Listado completo</h2>
+
+<p>
+    @Html.ActionLink("Nueva Finca", "Crear")
+</p>
+<table class="table tablaCustom">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_FINCA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LOCACION_FINCA)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="resaltado">
+                @Html.ActionLink(item.NOMBRE_FINCA, "ReportePotrerosPorFinca", new { parte = item.NOMBRE_FINCA })
+            </td> 
+            <td class="resaltado">
+                @Html.ActionLink(item.LOCACION_FINCA, "ReportePorUbicacion", new { parte = item.LOCACION_FINCA })
+
+            </td>
+            <td class="botones">
+                @Html.ActionLink("Modificar", "Modificar", new { id = item.ID_FINCA }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.ID_FINCA }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ID_FINCA })
+            </td>
+        </tr>
+    }
+
+</table>

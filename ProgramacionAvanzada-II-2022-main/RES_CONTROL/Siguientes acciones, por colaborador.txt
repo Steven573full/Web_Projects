@@ -1,0 +1,4 @@
+﻿Andrés
+	Actualizar las vistas para ajustarse al nuevo modelo.
+	Implica la creación del controlador y vistas para Bitácora.
+	Implica la actualización de las vistas para Usuario y Colaborador

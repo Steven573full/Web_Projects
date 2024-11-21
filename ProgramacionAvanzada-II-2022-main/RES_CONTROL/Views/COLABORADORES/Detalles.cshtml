@@ -1,0 +1,42 @@
+﻿@model RES_CONTROL.Models.COLABORADORES
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<h2>Detalles</h2>
+
+<div>
+    <h4>Colaboradores</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDENTIFICACION_LEGAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDENTIFICACION_LEGAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE_COMPLETO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_COMPLETO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIOS.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIOS.EMAIL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modificar", "Modificar", new { id = Model.ID_COLABORADOR }) |
+    @Html.ActionLink("Regresar al listado", "Index")
+</p>

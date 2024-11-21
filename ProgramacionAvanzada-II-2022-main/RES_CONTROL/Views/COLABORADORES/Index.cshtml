@@ -1,0 +1,46 @@
+﻿@model IEnumerable<RES_CONTROL.Models.COLABORADORES>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<h2>Listado completo</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Colaborador", "Crear")
+</p>
+<table class="table tablaCustom">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDENTIFICACION_LEGAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_COMPLETO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIOS.EMAIL)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="resaltado">
+                @Html.DisplayFor(modelItem => item.IDENTIFICACION_LEGAL)
+            </td>
+            <td class="resaltado">
+                @Html.DisplayFor(modelItem => item.NOMBRE_COMPLETO)
+            </td>
+            <td class="resaltado">
+                @Html.DisplayFor(modelItem => item.USUARIOS.EMAIL)
+            </td>
+            <td class="botones">
+                @Html.ActionLink("Modificar", "Modificar", new { id = item.ID_COLABORADOR }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.ID_COLABORADOR }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ID_COLABORADOR })
+            </td>
+        </tr>
+    }
+
+</table>

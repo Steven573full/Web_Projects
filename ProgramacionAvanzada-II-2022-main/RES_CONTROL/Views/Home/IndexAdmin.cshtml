@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "IndexAdmin";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div align="center">
+        <h3>Bienvenido(a) Señor(a) administrador(a)</h3>
+        <br />
+        <br />
+        <p>
+            <ul class="nav nav-stacked">
+
+                <li>@Html.ActionLink("Listado de colaboradores", "Index", "COLABORADORES", new { area = "" }, new { @style = "color:black;" })</li>
+                <li>@Html.ActionLink("Listado de fincas", "Index", "FINCAS", new { area = "" }, new { @style = "color:black;" })</li>
+                <li>@Html.ActionLink("Listado de usuarios", "Index", "USUARIOS", new { area = "" }, new { @style = "color:black;" })</li>
+                <li>@Html.ActionLink("Listado de vacunas", "Index", "VACUNAS", new { area = "" }, new { @style = "color:black;" })</li>
+
+            </ul>
+        </p>
+    </div>
+
+</div>
+

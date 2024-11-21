@@ -1,0 +1,35 @@
+﻿@model RES_CONTROL.Models.ALIMENTACION
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Opciones de Alimentación</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_ALIMENTACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_ALIMENTACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROPOSITO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROPOSITO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modificar", "Modificar", new { id = Model.ID_ALIMENTACION }) |
+    @Html.ActionLink("Regresar al listado", "Index")
+</p>

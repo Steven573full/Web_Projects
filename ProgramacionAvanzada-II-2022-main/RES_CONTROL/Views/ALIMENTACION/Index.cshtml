@@ -1,0 +1,43 @@
+﻿@model IEnumerable<RES_CONTROL.Models.ALIMENTACION>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Listado completo</h2>
+
+<p>
+    @Html.ActionLink("Nueva alimentación", "Crear")
+</p>
+<table class="table tablaCustom">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_ALIMENTACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROPOSITO)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr >
+            <td class="resaltado">
+                @Html.ActionLink(item.TIPO_ALIMENTACION, "ReportePorTipo", new { parte = item.TIPO_ALIMENTACION })
+            </td>
+            <td class="resaltado">
+                @Html.ActionLink(item.PROPOSITO, "ReportePorProposito", new { parte = item.PROPOSITO })
+            </td>
+            <td class="botones">
+                @Html.ActionLink("Modificar", "Modificar", new { id = item.ID_ALIMENTACION }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.ID_ALIMENTACION }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ID_ALIMENTACION })
+            </td>
+        </tr>
+    }
+
+</table>

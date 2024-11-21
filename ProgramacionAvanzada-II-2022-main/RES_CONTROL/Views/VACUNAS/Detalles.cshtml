@@ -1,0 +1,75 @@
+﻿@model RES_CONTROL.Models.VACUNAS
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Vacunas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE_VACUNA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_VACUNA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCION_VACUNA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCION_VACUNA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOSIS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOSIS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOSIS_RECOMENDADA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOSIS_RECOMENDADA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COLABORADORES.IDENTIFICACION_LEGAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COLABORADORES.IDENTIFICACION_LEGAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RESES.RAZA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RESES.RAZA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modificar", "Modificar", new { id = Model.ID_VACUNA }) |
+    @Html.ActionLink("Regresar al listado", "Index")
+</p>

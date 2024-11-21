@@ -1,0 +1,75 @@
+﻿@model IEnumerable<RES_CONTROL.Models.VACUNAS>
+
+@{
+    ViewBag.Title = "ReportePorFecha";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Reporte de vacunas por fecha</h2>
+
+<p>
+<<<<<<< Updated upstream
+    @Html.ActionLink("Volver al listado completo", "Index")
+=======
+    @Html.ActionLink("Crear Nuevo", "Create")
+>>>>>>> Stashed changes
+</p>
+<table class="table tablaCustom">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_VACUNA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPCION_VACUNA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOSIS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOSIS_RECOMENDADA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COLABORADORES.IDENTIFICACION_LEGAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RESES.RAZA)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOMBRE_VACUNA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DESCRIPCION_VACUNA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOSIS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOSIS_RECOMENDADA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COLABORADORES.IDENTIFICACION_LEGAL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RESES.RAZA)
+            </td>
+            <td class="botones">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_VACUNA }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_VACUNA }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_VACUNA })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,31 @@
+﻿@model RES_CONTROL.Clases.Usuario
+
+<br />
+<div align="center">
+    <img src="~/Imagenes/Logo.jpg" height="250" width="350"><img />
+</div>
+<br />
+<h2 align="center">Ingrese sus credenciales</h2>
+<br />
+<div align="center">
+    @using (Html.BeginForm())
+    {
+        <br />
+        @Html.LabelFor(d => d.EMAIL)
+        @Html.TextBoxFor(d => d.EMAIL)
+        <br />
+        <br />
+        @Html.LabelFor(d => d.PASSWORD)
+        @Html.PasswordFor(d => d.PASSWORD)
+        <br />
+        <br />
+        @Html.LabelFor(d => d.ROL)
+        @Html.TextBoxFor(d => d.ROL)
+        <br />
+        <br />
+        <button>Ingresar</button>
+        <br />
+        @TempData["Mensaje"]
+
+    }
+</div>

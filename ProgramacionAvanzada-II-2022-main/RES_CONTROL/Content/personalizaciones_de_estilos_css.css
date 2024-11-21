@@ -1,0 +1,127 @@
+/*
+tablaCustom 
+
+Habilita resaltado para las filas de la tabla con la clase 'resaltado' y extiende el área sensible al click de los elementos <a> a toda la celda.
+
+Transforma en botones los elementos <a> dentro de las filas marcadas con la clase "botones"
+
+util para reportes 
+*/
+
+.tablaCustom {
+  padding-left: 0;
+  margin-bottom: 0;
+  
+}
+
+.tablaCustom th {
+  text-align: center;
+}
+
+.tablaCustom td.resaltado a {
+  position: relative;
+  padding: 10px 15px;
+  display: block;
+  width: inherit;
+  height: inherit;
+}
+
+.tablaCustom td.resaltado a:hover {
+text-decoration: none;
+}
+
+.tablaCustom td.resaltado:hover,
+.tablaCustom td.resaltado:focus {
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+.tablaCustom td.resaltado:disabled > a {
+  color: #777777;
+}
+.tablaCustom td.resaltado:disabled > a:hover,
+.tablaCustom td.resaltado:disabled > a:focus {
+  color: #777777;
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.tablaCustom td.botones{
+  display: flex;
+  justify-content: center;
+}
+
+.tablaCustom td.botones a{
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 3px 6px;
+  font-size: 11px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+}
+
+.tablaCustom td.botones a {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  text-decoration: none;
+  text-align: center;
+
+}
+.tablaCustom td.botones a:focus{
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+    text-decoration: none;
+}
+.tablaCustom td.botones a:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+.botones a{
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 3px 6px;
+  font-size: 11px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+}
+
+.botones a {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  text-align: center;
+
+}
+.botones a:focus{
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.botones a:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}

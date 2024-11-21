@@ -1,0 +1,66 @@
+﻿@model RES_CONTROL.Models.RESES
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Desea eliminar este res?</h3>
+<div>
+    <h4>Reses</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RAZA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RAZA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FIERRO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FIERRO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SexoFull)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SexoFull)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_NACIMIENTO_APROX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_NACIMIENTO_APROX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POTREROS.DESCRIPCION_POTRERO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POTREROS.DESCRIPCION_POTRERO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver al listado", "Index")
+        </div>
+    }
+</div>

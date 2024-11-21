@@ -1,0 +1,49 @@
+﻿@model IEnumerable<RES_CONTROL.Models.POTREROS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listado completo</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Potrero", "Crear")
+</p>
+<table class="table tablaCustom">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPCION_POTRERO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALIMENTACION.TIPO_ALIMENTACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FINCAS.NOMBRE_FINCA)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="resaltado">
+                @Html.DisplayFor(modelItem => item.DESCRIPCION_POTRERO)
+            </td>
+            <td class="resaltado">
+                @Html.ActionLink(item.ALIMENTACION.TIPO_ALIMENTACION, "ReportePorAlimentacion", new { parte = item.ALIMENTACION.TIPO_ALIMENTACION })
+
+            </td>
+            <td class="resaltado">
+                @Html.ActionLink(item.FINCAS.NOMBRE_FINCA, "ReportePorFinca", new { parte = item.FINCAS.NOMBRE_FINCA })
+
+            </td>
+            <td class="botones">
+                @Html.ActionLink("Modificar", "Modificar", new { id = item.ID_POTRERO }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.ID_POTRERO }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ID_POTRERO })
+            </td>
+        </tr>
+    }
+
+</table>

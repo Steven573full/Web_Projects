@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Res Control (Campo)</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+@* Se introdujeron parte de los colores del esquema *@
+<body style="background-color: #D1E2C4">
+    <div style="background-color: #853D25" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header" align="center">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div align="center">
+                    @Html.ActionLink("ResControl, aplicación para la administración de hatos (Campo)", "Index", "Home", new { area = "" }, new { @style = "color:white;", @class = "navbar-brand" })
+                </div>
+               
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Alimentación", "Index", "ALIMENTACION", new { area = "" }, new { @style = "color:white;" })</li>
+                    <li>@Html.ActionLink("Potreros", "Index", "POTREROS", new { area = "" }, new { @style = "color:white;" })</li>
+                    <li>@Html.ActionLink("Reses", "Index", "RESES", new { area = "" }, new { @style = "color:white;" })</li>                
+                    <li>@Html.ActionLink("Contacte sistemas", "Contact", "Home", new { area = "" }, new { @style = "color:white;" })</li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Cerrar sesión", "Logoff", "Ingresar", new { area = "" }, new { @style = "color:white;" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Iniciar sesión", "Login", "Ingresar", new { area = "" }, new { @style = "color:white;" })</li>
+
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: #CFCECA" class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Ganadera</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

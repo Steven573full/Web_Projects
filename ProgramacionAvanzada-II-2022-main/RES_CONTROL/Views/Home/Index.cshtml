@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Pagina de inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<div class="row">
+    <div align="center">
+        <h3>Bienvenido(a) Señor(a) Ganader(a)</h3>
+        <br />
+        <br />
+        <p>
+            <ul class="nav nav-stacked">
+                <li>@Html.ActionLink("Listado de tipos de alimentación", "Index", "ALIMENTACION", new { area = "" }, new { @style = "color:black;" })</li>
+                <li>@Html.ActionLink("Listado de potreros", "Index", "POTREROS", new { area = "" }, new { @style = "color:black;" })</li>
+                <li>@Html.ActionLink("Listado de reses", "Index", "RESES", new { area = "" }, new { @style = "color:black;" })</li>   
+
+            </ul>
+        </p>
+    </div>
+
+</div>

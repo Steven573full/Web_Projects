@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="acf9f6ee935c4d75bca7fe3852ab6026" Name="Diagram1">
+        <EntityTypeShape EntityType="GANADERAModel.ALIMENTACION" Width="1.5" PointX="4.375" PointY="0.5" />
+        <EntityTypeShape EntityType="GANADERAModel.BITACORA" Width="1.5" PointX="0.875" PointY="3.25" />
+        <EntityTypeShape EntityType="GANADERAModel.COLABORADORES" Width="1.5" PointX="11.125" PointY="3.125" />
+        <EntityTypeShape EntityType="GANADERAModel.FINCAS" Width="1.5" PointX="4.375" PointY="6.25" />
+        <EntityTypeShape EntityType="GANADERAModel.POTREROS" Width="1.5" PointX="4.375" PointY="3.125" />
+        <EntityTypeShape EntityType="GANADERAModel.RESES" Width="1.5" PointX="6.625" PointY="3.125" />
+        <EntityTypeShape EntityType="GANADERAModel.USUARIOS" Width="1.5" PointX="11.125" PointY="0.5" />
+        <EntityTypeShape EntityType="GANADERAModel.VACUNAS" Width="1.5" PointX="8.875" PointY="3.125" />
+        <AssociationConnector Association="GANADERAModel.FK__POTREROS__ID_ALI__3B0BC30C" />
+        <AssociationConnector Association="GANADERAModel.FK__COLABORAD__ID_US__373B3228" />
+        <AssociationConnector Association="GANADERAModel.FK__VACUNAS__ID_COLA__41B8C09B" />
+        <AssociationConnector Association="GANADERAModel.FK__POTREROS__ID_FIN__3A179ED3" />
+        <AssociationConnector Association="GANADERAModel.FK__RESES__ID_POTRER__3DE82FB7" />
+        <AssociationConnector Association="GANADERAModel.FK__VACUNAS__ID_RES__40C49C62" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

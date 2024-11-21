@@ -1,0 +1,63 @@
+﻿@model IEnumerable<RES_CONTROL.Models.RESES>
+
+@{
+    ViewBag.Title = "ReportePorPotrero";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reporte de reses por potrero</h2>
+
+<p>
+<<<<<<< Updated upstream
+    @Html.ActionLink("Volver al listado completo", "Index")
+=======
+    @Html.ActionLink("Crear Nuevo", "Create")
+>>>>>>> Stashed changes
+</p>
+<table class="table tablaCustom">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RAZA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIERRO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEXO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_NACIMIENTO_APROX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.POTREROS.DESCRIPCION_POTRERO)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.RAZA)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FIERRO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SEXO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FECHA_NACIMIENTO_APROX)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.POTREROS.DESCRIPCION_POTRERO)
+    </td>
+    <td class="botones">
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID_RES }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID_RES }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID_RES })
+    </td>
+</tr>
+    }
+
+</table>

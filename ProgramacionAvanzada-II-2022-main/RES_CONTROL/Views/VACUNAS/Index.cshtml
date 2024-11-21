@@ -1,0 +1,75 @@
+﻿@model IEnumerable<RES_CONTROL.Models.VACUNAS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Listado completo</h2>
+
+<p>
+    @Html.ActionLink("Nueva Vacuna", "Crear")
+</p>
+<table class="table tablaCustom">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_VACUNA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPCION_VACUNA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOSIS) aplicadas
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOSIS_RECOMENDADA)
+        </th>
+        <th>
+            Colaborador que aplica la vacuna
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RESES.ID_RES)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="resaltado">
+                @Html.ActionLink(item.NOMBRE_VACUNA, "ReportePorNombre", new { parte = item.NOMBRE_VACUNA })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DESCRIPCION_VACUNA)
+            </td>
+            <td class="resaltado">
+                @* Falla *@
+                @Html.ActionLink(Convert.ToDateTime(item.FECHA).ToShortDateString(), "ReportePorFecha", new { parte = Convert.ToDateTime(item.FECHA).ToShortDateString() })
+
+            </td>
+            <td class="resaltado">
+                @Html.DisplayFor(modelItem => item.DOSIS)
+            </td>
+            <td class="resaltado">
+                @Html.DisplayFor(modelItem => item.DOSIS_RECOMENDADA)
+            </td>
+            <td class="resaltado">
+                @Html.DisplayFor(modelItem => item.COLABORADORES.NOMBRE_COMPLETO)
+            </td>
+            <td class="resaltado">
+                @Html.ActionLink(item.RESES.ID_RES.ToString(), "Detalles", "RESES", new { id = item.RESES.ID_RES }, null)
+
+            </td>
+            <td class="botones">
+                @Html.ActionLink("Modificar", "Modificar", new { id = item.ID_VACUNA }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.ID_VACUNA }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ID_VACUNA })
+            </td>
+        </tr>
+    }
+
+</table>

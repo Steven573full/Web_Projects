@@ -1,0 +1,50 @@
+﻿@model RES_CONTROL.Models.POTREROS
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Desea eliminar este potrero?</h3>
+<div>
+    <h4>Potreros</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCION_POTRERO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCION_POTRERO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ALIMENTACION.TIPO_ALIMENTACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ALIMENTACION.TIPO_ALIMENTACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FINCAS.NOMBRE_FINCA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FINCAS.NOMBRE_FINCA)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver al listado", "Index")
+        </div>
+    }
+</div>

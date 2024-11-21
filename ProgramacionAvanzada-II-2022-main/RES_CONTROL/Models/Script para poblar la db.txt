@@ -1,0 +1,360 @@
+﻿use ganadera
+
+INSERT INTO BITACORA (
+DESCRIPCION_ERROR, /*VARCHAR(30)*/
+FECHA_ERROR /*DATE YYYY-MM-DD*/
+	)
+	VALUES
+	(
+	'error 1',
+	'2019-08-01'
+	),
+	(
+	'error 2',
+	'2019-08-10'
+	),	
+	(
+	'error 3',
+	'2019-08-01'
+	),	
+	(
+	'error 4',
+	'2019-08-11'
+	),	
+	(
+	'error 5',
+	'2019-08-01'
+	),
+	(
+	'error 6',
+	'2019-08-12'
+	);
+
+/*------------------------------------------------------------*/
+
+
+use ganadera
+
+INSERT INTO USUARIOS (
+EMAIL, /*VARCHAR(30)*/
+ROL, /*VARCHAR(20)*/
+PASSWORD /*VARCHAR(20)*/
+)
+VALUES
+	(
+	'usuario1@finca.farm',
+	'Administrativo',
+	'12345'
+	),
+	(
+	'usuario2@finca.farm',
+	'Campo',
+	'12345'
+	),
+	(
+	'usuario3@finca.farm',
+	'Campo',
+	'12345'
+	),
+	(
+	'usuario4@finca.farm',
+	'Campo',
+	'12345'
+	),	
+	(
+	'usuario5@finca.farm',
+	'Campo',
+	'12345'
+	),
+	(
+	'usuario6@finca.farm',
+	'Administrativo',
+	'12345'
+	);
+
+/*------------------------------------------------------------*/
+
+use ganadera
+
+INSERT INTO FINCAS (
+NOMBRE_FINCA, /*VARCHAR(20)*/
+LOCACION_FINCA /*VARCHAR(80)*/
+)
+VALUES
+	(
+	'finca1',
+	'Guácimo'
+	),
+	(
+	'finca2',
+	'Guápiles'
+	),
+	(
+	'finca3',
+	'Guanacaste'
+	),
+	(
+	'finca4',
+	'Guadalupe'
+	),
+	(
+	'finca5',
+	'San Carlos'
+	),
+	(
+	'finca6',
+	'Los Chiles'
+	);
+
+/*------------------------------------------------------------*/
+
+use ganadera
+
+INSERT INTO ALIMENTACION (
+TIPO_ALIMENTACION, /*VARCHAR(30)*/
+PROPOSITO /*VARCHAR(30)*/
+)
+VALUES
+	(
+	'Mixta',
+	'Mixto'
+	),
+	(
+	'Seca',
+	'Mixto'
+	),
+	(
+	'Seca',
+	'Carne'
+	),
+	(
+	'Mixta',
+	'Carne'
+	),
+	(
+	'Seca',
+	'Leche'
+	),
+	(
+	'Mixta',
+	'Reproduccion'
+	);
+
+
+/*------------------------------------------------------------*/
+
+use ganadera
+
+INSERT INTO COLABORADORES (
+IDENTIFICACION_LEGAL, /*VARCHAR(30)*/
+NOMBRE, /*VARCHAR(30)*/
+APELLIDOS, /*VARCHAR(60)*/
+ID_USUARIO /*INT*/
+)
+VALUES
+	(
+	'123456',
+	'Pedro',
+	'Perez Pereira',
+	'1'
+	),
+	(
+	'123457',
+	'Ana',
+	'Perez Pereira',
+	'2'
+	),
+	(
+	'123458',
+	'Juan',
+	'Perez Pereira',
+	'3'
+	),
+	(
+	'123459',
+	'María',
+	'Perez Pereira',
+	'4'
+	),
+	(
+	'123450',
+	'Pablo',
+	'Perez Pereira',
+	'5'
+	),
+	(
+	'123451',
+	'Raquel',
+	'Perez Pereira',
+	'6'
+	);
+
+
+/*------------------------------------------------------------*/
+
+use ganadera
+
+INSERT INTO POTREROS (
+DESCRIPCION_POTRERO, /*VARCHAR(50)*/
+ID_FINCA, /*INT*/
+ID_ALIMENTACION /*INT*/
+)
+VALUES
+	(
+	'Primero',
+	'6',
+	'1'
+	),
+	(
+	'Segundo',
+	'5',
+	'2'
+	),
+	(
+	'Tercero',
+	'4',
+	'3'
+	),
+	(
+	'Duodécimo sexto',
+	'3',
+	'4'
+	),
+	(
+	'Quinto',
+	'2',
+	'5'
+	),
+	(
+	'Frijol',
+	'1',
+	'6'
+	);
+
+
+/*------------------------------------------------------------*/
+
+
+use ganadera
+
+INSERT INTO RESES (
+RAZA, /*VARCHAR(30)*/
+FIERRO, /*VARCHAR(30)*/
+SEXO, /*CHAR*/
+FECHA_NACIMIENTO_APROX, /*DATE YYYY-MM-DD*/
+ID_POTRERO /*INT*/
+)
+VALUES
+	(
+	'Holstein',
+	'Pedro3',
+	'H',
+	'2019-03-01',
+	'1'
+	),
+	(
+	'Cebú',
+	'Ana4',
+	'M',
+	'2019-12-01',
+	'2'
+	),
+	(
+	'Brahman',
+	'Juan2',
+	'M',
+	'2019-11-01',
+	'3'
+	),
+	(
+	'Simmental',
+	'María1',
+	'H',
+	'2019-08-01',
+	'4'
+	),
+	(
+	'Braford',
+	'Pablo6',
+	'H',
+	'2021-08-01',
+	'5'
+	),
+	(
+	'Jersey',
+	'Raquel5',
+	'z',
+	'2019-08-01',
+	'6'
+	);
+
+
+/*------------------------------------------------------------*/
+
+
+use ganadera
+
+INSERT INTO VACUNAS (
+NOMBRE_VACUNA, /*VARCHAR(30)*/
+DESCRIPCION_VACUNA, /*VARCHAR(50)*/
+FECHA, /*DATE YYYY-MM-DD*/
+DOSIS, /*INT*/
+DOSIS_RECOMENDADA, /*INT*/
+ID_RES, /*INT*/
+ID_COLABORADOR /*INT*/
+)
+VALUES
+	(
+	'Anti Rabia',
+	'Vacuna estandar para ganado de consumo',
+	'2019-01-01',
+	'1',
+	'2',	
+	'6',
+	'1'
+	),
+	(
+	'Anti Rabia',
+	'Vacuna estandar para ganado de consumo',
+	'2019-02-01',
+	'1',
+	'2',	
+	'5',
+	'2'
+	),
+	(
+	'Anti Rabia',
+	'Vacuna estandar para ganado de consumo',
+	'2019-08-01',
+	'1',
+	'2',	
+	'4',
+	'3'
+	),
+	(
+	'Anti Rabia',
+	'Vacuna estandar para ganado de consumo',
+	'2019-07-01',
+	'1',
+	'2',	
+	'3',
+	'4'
+	),
+	(
+	'Anti Rabia',
+	'Vacuna estandar para ganado de consumo',
+	'2019-06-01',
+	'1',
+	'2',	
+	'2',
+	'5'
+	),
+	(
+	'Anti Rabia',
+	'Vacuna estandar para ganado de consumo',
+	'2019-05-01',
+	'1',
+	'2',	
+	'1',
+	'6'
+	);

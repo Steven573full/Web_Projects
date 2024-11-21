@@ -1,0 +1,70 @@
+﻿@model IEnumerable<RES_CONTROL.Models.RESES>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listado completo</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Res", "Crear")
+</p>
+<table class="table tablaCustom">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RAZA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIERRO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SexoFull)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_NACIMIENTO_APROX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EDAD_MESES)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.POTREROS.DESCRIPCION_POTRERO)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td class="resaltado">
+        @Html.ActionLink(item.RAZA, "ReportePorRaza", new { parte = item.RAZA })
+
+    </td>
+    <td class="resaltado">
+        @Html.ActionLink(item.FIERRO, "ReportePorFierro", new { parte = item.FIERRO })
+
+    </td>
+    <td class="resaltado">
+        @Html.DisplayFor(modelItem => item.SexoFull)
+        @Html.ActionLink(item.SexoFull, "ReportePorSexo", new { parte = item.SEXO })
+
+    </td>
+    <td class="resaltado">
+        @Html.DisplayFor(modelItem => item.FECHA_NACIMIENTO_APROX)
+    </td>
+    <td class="resaltado">
+        @Html.ActionLink(item.EDAD_MESES, "ReportePorEdad", new { parte = item.EDAD_MESES })
+    </td>
+    <td class="resaltado">
+        @Html.ActionLink(item.POTREROS.DESCRIPCION_POTRERO, "ReportePorPotrero", new { parte = item.POTREROS.DESCRIPCION_POTRERO })
+
+    </td>
+    <td class="botones">
+        @Html.ActionLink("Modificar", "Modificar", new { id = item.ID_RES }) |
+        @Html.ActionLink("Detalles", "Detalles", new { id = item.ID_RES }) |
+        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ID_RES })
+    </td>
+</tr>
+    }
+
+</table>

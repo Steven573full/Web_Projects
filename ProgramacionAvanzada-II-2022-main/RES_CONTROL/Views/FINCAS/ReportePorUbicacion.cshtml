@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RES_CONTROL.Models.FINCAS>
+
+@{
+    ViewBag.Title = "ReportePorUbicacion";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Reporte de fincas por ubicación</h2>
+
+<p>
+<<<<<<< Updated upstream
+    @Html.ActionLink("Volver al listado completo", "Index")
+=======
+    @Html.ActionLink("Crear Nuevo", "Create")
+>>>>>>> Stashed changes
+</p>
+<table class="table tablaCustom">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_FINCA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LOCACION_FINCA)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBRE_FINCA)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LOCACION_FINCA)
+    </td>
+    <td class="botones">
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID_FINCA }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID_FINCA }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID_FINCA })
+    </td>
+</tr>
+    }
+
+</table>

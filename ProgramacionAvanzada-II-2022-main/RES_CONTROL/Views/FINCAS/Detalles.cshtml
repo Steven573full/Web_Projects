@@ -1,0 +1,35 @@
+﻿@model RES_CONTROL.Models.FINCAS
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Fincas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE_FINCA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_FINCA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOCACION_FINCA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOCACION_FINCA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modificar", "Modificar", new { id = Model.ID_FINCA }) |
+    @Html.ActionLink("Regresar al listado", "Index")
+</p>

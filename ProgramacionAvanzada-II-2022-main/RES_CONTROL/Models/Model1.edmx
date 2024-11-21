@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GANADERAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ALIMENTACION">
+          <Key>
+            <PropertyRef Name="ID_ALIMENTACION" />
+          </Key>
+          <Property Name="ID_ALIMENTACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPO_ALIMENTACION" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PROPOSITO" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BITACORA">
+          <Key>
+            <PropertyRef Name="ID_ERROR" />
+          </Key>
+          <Property Name="ID_ERROR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION_ERROR" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="FECHA_ERROR" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COLABORADORES">
+          <Key>
+            <PropertyRef Name="ID_COLABORADOR" />
+          </Key>
+          <Property Name="ID_COLABORADOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDENTIFICACION_LEGAL" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="APELLIDOS" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FINCAS">
+          <Key>
+            <PropertyRef Name="ID_FINCA" />
+          </Key>
+          <Property Name="ID_FINCA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_FINCA" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LOCACION_FINCA" Type="varchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POTREROS">
+          <Key>
+            <PropertyRef Name="ID_POTRERO" />
+          </Key>
+          <Property Name="ID_POTRERO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION_POTRERO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_FINCA" Type="int" Nullable="false" />
+          <Property Name="ID_ALIMENTACION" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RESES">
+          <Key>
+            <PropertyRef Name="ID_RES" />
+          </Key>
+          <Property Name="ID_RES" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RAZA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FIERRO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="SEXO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FECHA_NACIMIENTO_APROX" Type="date" Nullable="false" />
+          <Property Name="ID_POTRERO" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ROL" Type="varchar" MaxLength="20" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VACUNAS">
+          <Key>
+            <PropertyRef Name="ID_VACUNA" />
+          </Key>
+          <Property Name="ID_VACUNA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_VACUNA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DESCRIPCION_VACUNA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHA" Type="date" />
+          <Property Name="DOSIS" Type="int" />
+          <Property Name="DOSIS_RECOMENDADA" Type="int" />
+          <Property Name="ID_RES" Type="int" Nullable="false" />
+          <Property Name="ID_COLABORADOR" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__COLABORAD__ID_US__4C364F0E">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="COLABORADORES" Type="Self.COLABORADORES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="COLABORADORES">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POTREROS__ID_ALI__5006DFF2">
+          <End Role="ALIMENTACION" Type="Self.ALIMENTACION" Multiplicity="1" />
+          <End Role="POTREROS" Type="Self.POTREROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALIMENTACION">
+              <PropertyRef Name="ID_ALIMENTACION" />
+            </Principal>
+            <Dependent Role="POTREROS">
+              <PropertyRef Name="ID_ALIMENTACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POTREROS__ID_FIN__4F12BBB9">
+          <End Role="FINCAS" Type="Self.FINCAS" Multiplicity="1" />
+          <End Role="POTREROS" Type="Self.POTREROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FINCAS">
+              <PropertyRef Name="ID_FINCA" />
+            </Principal>
+            <Dependent Role="POTREROS">
+              <PropertyRef Name="ID_FINCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESES__ID_POTRER__52E34C9D">
+          <End Role="POTREROS" Type="Self.POTREROS" Multiplicity="1" />
+          <End Role="RESES" Type="Self.RESES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POTREROS">
+              <PropertyRef Name="ID_POTRERO" />
+            </Principal>
+            <Dependent Role="RESES">
+              <PropertyRef Name="ID_POTRERO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VACUNAS__ID_COLA__56B3DD81">
+          <End Role="COLABORADORES" Type="Self.COLABORADORES" Multiplicity="1" />
+          <End Role="VACUNAS" Type="Self.VACUNAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COLABORADORES">
+              <PropertyRef Name="ID_COLABORADOR" />
+            </Principal>
+            <Dependent Role="VACUNAS">
+              <PropertyRef Name="ID_COLABORADOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VACUNAS__ID_RES__55BFB948">
+          <End Role="RESES" Type="Self.RESES" Multiplicity="1" />
+          <End Role="VACUNAS" Type="Self.VACUNAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESES">
+              <PropertyRef Name="ID_RES" />
+            </Principal>
+            <Dependent Role="VACUNAS">
+              <PropertyRef Name="ID_RES" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GANADERAModelStoreContainer">
+          <EntitySet Name="ALIMENTACION" EntityType="Self.ALIMENTACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BITACORA" EntityType="Self.BITACORA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COLABORADORES" EntityType="Self.COLABORADORES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FINCAS" EntityType="Self.FINCAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POTREROS" EntityType="Self.POTREROS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESES" EntityType="Self.RESES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VACUNAS" EntityType="Self.VACUNAS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__COLABORAD__ID_US__4C364F0E" Association="Self.FK__COLABORAD__ID_US__4C364F0E">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="COLABORADORES" EntitySet="COLABORADORES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POTREROS__ID_ALI__5006DFF2" Association="Self.FK__POTREROS__ID_ALI__5006DFF2">
+            <End Role="ALIMENTACION" EntitySet="ALIMENTACION" />
+            <End Role="POTREROS" EntitySet="POTREROS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POTREROS__ID_FIN__4F12BBB9" Association="Self.FK__POTREROS__ID_FIN__4F12BBB9">
+            <End Role="FINCAS" EntitySet="FINCAS" />
+            <End Role="POTREROS" EntitySet="POTREROS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESES__ID_POTRER__52E34C9D" Association="Self.FK__RESES__ID_POTRER__52E34C9D">
+            <End Role="POTREROS" EntitySet="POTREROS" />
+            <End Role="RESES" EntitySet="RESES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VACUNAS__ID_COLA__56B3DD81" Association="Self.FK__VACUNAS__ID_COLA__56B3DD81">
+            <End Role="COLABORADORES" EntitySet="COLABORADORES" />
+            <End Role="VACUNAS" EntitySet="VACUNAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VACUNAS__ID_RES__55BFB948" Association="Self.FK__VACUNAS__ID_RES__55BFB948">
+            <End Role="RESES" EntitySet="RESES" />
+            <End Role="VACUNAS" EntitySet="VACUNAS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GANADERAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GANADERAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ALIMENTACION" EntityType="GANADERAModel.ALIMENTACION" />
+          <EntitySet Name="BITACORA" EntityType="GANADERAModel.BITACORA" />
+          <EntitySet Name="COLABORADORES" EntityType="GANADERAModel.COLABORADORES" />
+          <EntitySet Name="FINCAS" EntityType="GANADERAModel.FINCAS" />
+          <EntitySet Name="POTREROS" EntityType="GANADERAModel.POTREROS" />
+          <EntitySet Name="RESES" EntityType="GANADERAModel.RESES" />
+          <EntitySet Name="USUARIOS" EntityType="GANADERAModel.USUARIOS" />
+          <EntitySet Name="VACUNAS" EntityType="GANADERAModel.VACUNAS" />
+          <AssociationSet Name="FK__POTREROS__ID_ALI__3B0BC30C" Association="GANADERAModel.FK__POTREROS__ID_ALI__3B0BC30C">
+            <End Role="ALIMENTACION" EntitySet="ALIMENTACION" />
+            <End Role="POTREROS" EntitySet="POTREROS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COLABORAD__ID_US__373B3228" Association="GANADERAModel.FK__COLABORAD__ID_US__373B3228">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="COLABORADORES" EntitySet="COLABORADORES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VACUNAS__ID_COLA__41B8C09B" Association="GANADERAModel.FK__VACUNAS__ID_COLA__41B8C09B">
+            <End Role="COLABORADORES" EntitySet="COLABORADORES" />
+            <End Role="VACUNAS" EntitySet="VACUNAS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POTREROS__ID_FIN__3A179ED3" Association="GANADERAModel.FK__POTREROS__ID_FIN__3A179ED3">
+            <End Role="FINCAS" EntitySet="FINCAS" />
+            <End Role="POTREROS" EntitySet="POTREROS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RESES__ID_POTRER__3DE82FB7" Association="GANADERAModel.FK__RESES__ID_POTRER__3DE82FB7">
+            <End Role="POTREROS" EntitySet="POTREROS" />
+            <End Role="RESES" EntitySet="RESES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VACUNAS__ID_RES__40C49C62" Association="GANADERAModel.FK__VACUNAS__ID_RES__40C49C62">
+            <End Role="RESES" EntitySet="RESES" />
+            <End Role="VACUNAS" EntitySet="VACUNAS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ALIMENTACION">
+          <Key>
+            <PropertyRef Name="ID_ALIMENTACION" />
+          </Key>
+          <Property Name="ID_ALIMENTACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO_ALIMENTACION" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PROPOSITO" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="POTREROS" Relationship="GANADERAModel.FK__POTREROS__ID_ALI__3B0BC30C" FromRole="ALIMENTACION" ToRole="POTREROS" />
+        </EntityType>
+        <EntityType Name="BITACORA">
+          <Key>
+            <PropertyRef Name="ID_ERROR" />
+          </Key>
+          <Property Name="ID_ERROR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION_ERROR" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_ERROR" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="COLABORADORES">
+          <Key>
+            <PropertyRef Name="ID_COLABORADOR" />
+          </Key>
+          <Property Name="ID_COLABORADOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDENTIFICACION_LEGAL" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="APELLIDOS" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="GANADERAModel.FK__COLABORAD__ID_US__373B3228" FromRole="COLABORADORES" ToRole="USUARIOS" />
+          <NavigationProperty Name="VACUNAS" Relationship="GANADERAModel.FK__VACUNAS__ID_COLA__41B8C09B" FromRole="COLABORADORES" ToRole="VACUNAS" />
+        </EntityType>
+        <EntityType Name="FINCAS">
+          <Key>
+            <PropertyRef Name="ID_FINCA" />
+          </Key>
+          <Property Name="ID_FINCA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_FINCA" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LOCACION_FINCA" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="POTREROS" Relationship="GANADERAModel.FK__POTREROS__ID_FIN__3A179ED3" FromRole="FINCAS" ToRole="POTREROS" />
+        </EntityType>
+        <EntityType Name="POTREROS">
+          <Key>
+            <PropertyRef Name="ID_POTRERO" />
+          </Key>
+          <Property Name="ID_POTRERO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION_POTRERO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_FINCA" Type="Int32" Nullable="false" />
+          <Property Name="ID_ALIMENTACION" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ALIMENTACION" Relationship="GANADERAModel.FK__POTREROS__ID_ALI__3B0BC30C" FromRole="POTREROS" ToRole="ALIMENTACION" />
+          <NavigationProperty Name="FINCAS" Relationship="GANADERAModel.FK__POTREROS__ID_FIN__3A179ED3" FromRole="POTREROS" ToRole="FINCAS" />
+          <NavigationProperty Name="RESES" Relationship="GANADERAModel.FK__RESES__ID_POTRER__3DE82FB7" FromRole="POTREROS" ToRole="RESES" />
+        </EntityType>
+        <EntityType Name="RESES">
+          <Key>
+            <PropertyRef Name="ID_RES" />
+          </Key>
+          <Property Name="ID_RES" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RAZA" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FIERRO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SEXO" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FECHA_NACIMIENTO_APROX" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_POTRERO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="POTREROS" Relationship="GANADERAModel.FK__RESES__ID_POTRER__3DE82FB7" FromRole="RESES" ToRole="POTREROS" />
+          <NavigationProperty Name="VACUNAS" Relationship="GANADERAModel.FK__VACUNAS__ID_RES__40C49C62" FromRole="RESES" ToRole="VACUNAS" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ROL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="COLABORADORES" Relationship="GANADERAModel.FK__COLABORAD__ID_US__373B3228" FromRole="USUARIOS" ToRole="COLABORADORES" />
+        </EntityType>
+        <EntityType Name="VACUNAS">
+          <Key>
+            <PropertyRef Name="ID_VACUNA" />
+          </Key>
+          <Property Name="ID_VACUNA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_VACUNA" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION_VACUNA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA" Type="DateTime" Precision="0" />
+          <Property Name="DOSIS" Type="Int32" />
+          <Property Name="DOSIS_RECOMENDADA" Type="Int32" />
+          <Property Name="ID_RES" Type="Int32" Nullable="false" />
+          <Property Name="ID_COLABORADOR" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="COLABORADORES" Relationship="GANADERAModel.FK__VACUNAS__ID_COLA__41B8C09B" FromRole="VACUNAS" ToRole="COLABORADORES" />
+          <NavigationProperty Name="RESES" Relationship="GANADERAModel.FK__VACUNAS__ID_RES__40C49C62" FromRole="VACUNAS" ToRole="RESES" />
+        </EntityType>
+        <Association Name="FK__POTREROS__ID_ALI__3B0BC30C">
+          <End Type="GANADERAModel.ALIMENTACION" Role="ALIMENTACION" Multiplicity="1" />
+          <End Type="GANADERAModel.POTREROS" Role="POTREROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ALIMENTACION">
+              <PropertyRef Name="ID_ALIMENTACION" />
+            </Principal>
+            <Dependent Role="POTREROS">
+              <PropertyRef Name="ID_ALIMENTACION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COLABORAD__ID_US__373B3228">
+          <End Type="GANADERAModel.USUARIOS" Role="USUARIOS" Multiplicity="1" />
+          <End Type="GANADERAModel.COLABORADORES" Role="COLABORADORES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="COLABORADORES">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VACUNAS__ID_COLA__41B8C09B">
+          <End Type="GANADERAModel.COLABORADORES" Role="COLABORADORES" Multiplicity="1" />
+          <End Type="GANADERAModel.VACUNAS" Role="VACUNAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COLABORADORES">
+              <PropertyRef Name="ID_COLABORADOR" />
+            </Principal>
+            <Dependent Role="VACUNAS">
+              <PropertyRef Name="ID_COLABORADOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POTREROS__ID_FIN__3A179ED3">
+          <End Type="GANADERAModel.FINCAS" Role="FINCAS" Multiplicity="1" />
+          <End Type="GANADERAModel.POTREROS" Role="POTREROS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FINCAS">
+              <PropertyRef Name="ID_FINCA" />
+            </Principal>
+            <Dependent Role="POTREROS">
+              <PropertyRef Name="ID_FINCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RESES__ID_POTRER__3DE82FB7">
+          <End Type="GANADERAModel.POTREROS" Role="POTREROS" Multiplicity="1" />
+          <End Type="GANADERAModel.RESES" Role="RESES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POTREROS">
+              <PropertyRef Name="ID_POTRERO" />
+            </Principal>
+            <Dependent Role="RESES">
+              <PropertyRef Name="ID_POTRERO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VACUNAS__ID_RES__40C49C62">
+          <End Type="GANADERAModel.RESES" Role="RESES" Multiplicity="1" />
+          <End Type="GANADERAModel.VACUNAS" Role="VACUNAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESES">
+              <PropertyRef Name="ID_RES" />
+            </Principal>
+            <Dependent Role="VACUNAS">
+              <PropertyRef Name="ID_RES" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GANADERAModelStoreContainer" CdmEntityContainer="GANADERAEntities">
+          <EntitySetMapping Name="ALIMENTACION">
+            <EntityTypeMapping TypeName="GANADERAModel.ALIMENTACION">
+              <MappingFragment StoreEntitySet="ALIMENTACION">
+                <ScalarProperty Name="PROPOSITO" ColumnName="PROPOSITO" />
+                <ScalarProperty Name="TIPO_ALIMENTACION" ColumnName="TIPO_ALIMENTACION" />
+                <ScalarProperty Name="ID_ALIMENTACION" ColumnName="ID_ALIMENTACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BITACORA">
+            <EntityTypeMapping TypeName="GANADERAModel.BITACORA">
+              <MappingFragment StoreEntitySet="BITACORA">
+                <ScalarProperty Name="FECHA_ERROR" ColumnName="FECHA_ERROR" />
+                <ScalarProperty Name="DESCRIPCION_ERROR" ColumnName="DESCRIPCION_ERROR" />
+                <ScalarProperty Name="ID_ERROR" ColumnName="ID_ERROR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COLABORADORES">
+            <EntityTypeMapping TypeName="GANADERAModel.COLABORADORES">
+              <MappingFragment StoreEntitySet="COLABORADORES">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="IDENTIFICACION_LEGAL" ColumnName="IDENTIFICACION_LEGAL" />
+                <ScalarProperty Name="ID_COLABORADOR" ColumnName="ID_COLABORADOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FINCAS">
+            <EntityTypeMapping TypeName="GANADERAModel.FINCAS">
+              <MappingFragment StoreEntitySet="FINCAS">
+                <ScalarProperty Name="LOCACION_FINCA" ColumnName="LOCACION_FINCA" />
+                <ScalarProperty Name="NOMBRE_FINCA" ColumnName="NOMBRE_FINCA" />
+                <ScalarProperty Name="ID_FINCA" ColumnName="ID_FINCA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POTREROS">
+            <EntityTypeMapping TypeName="GANADERAModel.POTREROS">
+              <MappingFragment StoreEntitySet="POTREROS">
+                <ScalarProperty Name="ID_ALIMENTACION" ColumnName="ID_ALIMENTACION" />
+                <ScalarProperty Name="ID_FINCA" ColumnName="ID_FINCA" />
+                <ScalarProperty Name="DESCRIPCION_POTRERO" ColumnName="DESCRIPCION_POTRERO" />
+                <ScalarProperty Name="ID_POTRERO" ColumnName="ID_POTRERO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESES">
+            <EntityTypeMapping TypeName="GANADERAModel.RESES">
+              <MappingFragment StoreEntitySet="RESES">
+                <ScalarProperty Name="ID_POTRERO" ColumnName="ID_POTRERO" />
+                <ScalarProperty Name="FECHA_NACIMIENTO_APROX" ColumnName="FECHA_NACIMIENTO_APROX" />
+                <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+                <ScalarProperty Name="FIERRO" ColumnName="FIERRO" />
+                <ScalarProperty Name="RAZA" ColumnName="RAZA" />
+                <ScalarProperty Name="ID_RES" ColumnName="ID_RES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="GANADERAModel.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="ROL" ColumnName="ROL" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VACUNAS">
+            <EntityTypeMapping TypeName="GANADERAModel.VACUNAS">
+              <MappingFragment StoreEntitySet="VACUNAS">
+                <ScalarProperty Name="ID_COLABORADOR" ColumnName="ID_COLABORADOR" />
+                <ScalarProperty Name="ID_RES" ColumnName="ID_RES" />
+                <ScalarProperty Name="DOSIS_RECOMENDADA" ColumnName="DOSIS_RECOMENDADA" />
+                <ScalarProperty Name="DOSIS" ColumnName="DOSIS" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="DESCRIPCION_VACUNA" ColumnName="DESCRIPCION_VACUNA" />
+                <ScalarProperty Name="NOMBRE_VACUNA" ColumnName="NOMBRE_VACUNA" />
+                <ScalarProperty Name="ID_VACUNA" ColumnName="ID_VACUNA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

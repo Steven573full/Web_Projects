@@ -1,0 +1,41 @@
+﻿@model IEnumerable<RES_CONTROL.Models.USUARIOS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Listado completo</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Usuario", "Crear")
+</p>
+<table class="table tablaCustom">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PASSWORD)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="resaltado">
+                @Html.DisplayFor(modelItem => item.EMAIL)
+            </td>
+            <td class="resaltado">
+                @Html.DisplayFor(modelItem => item.ROL)
+            </td>
+            <td class="botones">
+                @Html.ActionLink("Modificar", "Modificar", new { id = item.ID_USUARIO }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.ID_USUARIO }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ID_USUARIO })
+            </td>
+        </tr>
+    }
+
+</table>
