@@ -1,0 +1,30 @@
+Notas
+
+ 	--Instalar EntityFramework al proyecto
+
+Vamos a administrar paquetes Nuggetts y asegurandonos que 
+estamos en la raiz del proyecto ponemos el siguiente comando:
+
+Scaffold-DbContext "Server=(local); Database=(NombreBD); Integrated Security=true" Microsoft.EntityFrameworkCore.SqlServer
+
+Y con eso hacemos la conexión a BD
+
+	--Referencias
+Click derecho a las dependiencias de cada biblioteca, agregamos las referencias:
+
+	DAL <= Entity
+	BLL <= DAL
+	BLL <= Entity
+	IOC <= BLL
+	IOC <= DAL
+	AplicacionWeb <= BLL
+	AplicacionWeb <= Entity
+	AplicacionWeb <= IOC 
+
+En Dependencias de IOC ponemos las siguientes:
+
+using SistemaVenta.DAL.Implementacion;
+using SistemaVenta.DAL.Interfaces;
+
+Luego:
+
