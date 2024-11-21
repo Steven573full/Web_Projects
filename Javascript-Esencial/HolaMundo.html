@@ -1,0 +1,28 @@
+<!--Tipo de documento = HTML-->
+<!DOCTYPE html>
+<!--Emprezamos a escribir codigo HTML-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejemplo pagina HTML con Javascript</title>
+    </head>
+
+    <body>
+        <h1>Hola mundo!</h1>
+        <p>Este es un ejemplo de una pagina web con codigo Javascript</p>
+
+        <script>
+            //Javascript code
+            function saludo(nombre){
+                return "Hola, "+ nombre + "!";
+            }
+
+            let usuario = "Steven";
+            let mensajeSaludo = saludo(usuario);
+
+            alert(mensajeSaludo);
+        </script>
+        <script src="JavaScript.js"></script>
+    </body>
+</html>
